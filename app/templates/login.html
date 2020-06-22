@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <body class="login-page">
+        <div class="login-box">
+            <div>
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <h3>Log In</h3>
+                    <div class="mt-4 form-group">
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email address") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg", placeholder="Email address") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control form-control-lg is-invalid", placeholder="Password") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control form-control-lg", placeholder="Password") }}
+                        {% endif %}
+                    </div>
+                    <div class="mt-4 row">
+                        <div class="col-sm-6 mt-2 remember-me">
+                            {{ form.remember() }}
+                            {{ form.remember.label() }}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr class="my-4">
+            <div>
+                <h5>Need an account?</h5>
+                <a href="{{ url_for('register') }}" class="mt-4 btn btn-lg btn-block btn-outline-dark">Sign Up Here</a>
+            </div>
+        </div>
+    </body>
+{% endblock %}
