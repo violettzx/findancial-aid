@@ -3,15 +3,47 @@ html {
 }
 
 body {
-  
+  background-color: #36A1D4;
+  font-family: "Open Sans";
 }
 
-
-.login-page {
-  background-color: #85C1E9;
+.flex-body {
   height: 100%;
   display: flex;
+  padding: 15px;
   align-items: center;
+}
+
+.start-page {
+  height: 100%;
+}
+
+.app-name {
+  margin-top: 80px;
+}
+
+.logo-first {
+  font-family: "Oleo Script";
+  font-size: 6rem;
+  color: #FFF3EC;
+  text-shadow: 1px 1px #222;
+}
+
+.logo-second {
+  font-family: "Oleo Script";
+  font-size: 6rem;
+  color: #C70039;
+  text-shadow: 1px 1px #222;
+}
+
+.tagline {
+  font-size: 20px;
+  font-style: italic;
+  margin-top: -15px;
+}
+
+.start-buttons {
+  margin-top: 30px;
 }
 
 .login-box {
