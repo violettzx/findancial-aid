@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ plan.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div>
+        <button onclick="back()">Back</button>
+        <h1>{{ plan.name }}</h1>
+        <a href="{{ plan.website }}">Website</a>
+        <h2>Requirements</h2>
+        <p class="article-content">{{ plan.req_full }}</p>
+        <h2>Benefits</h2>
+        <p class="article-content">{{ plan.benefits_full }}</p>
+        <h2>How to Apply</h2>
+        <p class="article-content">{{ plan.application }}</p>
+    </div>
+    <script>
+        function back() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

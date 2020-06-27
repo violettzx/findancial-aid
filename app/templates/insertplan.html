@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Plan</title>
+</head>
+<body>
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend>{{ legend }}</legend>
+            <div>
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+            <div>
+                {{ form.req_short.label }}
+                {{ form.req_short }}
+            </div>
+            <div>
+                {{ form.req_full.label }}
+                {{ form.req_full }}
+            </div>
+            <div>
+                {{ form.benefits_short.label }}
+                {{ form.benefits_short }}
+            </div>
+            <div>
+                {{ form.benefits_full.label }}
+                {{ form.benefits_full }}
+            </div>
+            <div>
+                {{ form.website.label }}
+                {{ form.website }}
+            </div>
+            <div>
+                {{ form.application.label }}
+                {{ form.application }}
+            </div>
+            <div>
+                {{ form.kw1.label }}
+                {{ form.kw1 }}
+            </div>
+            <div>
+                {{ form.kw2.label }}
+                {{ form.kw2 }}
+            </div>
+            <div>
+                {{ form.kw3.label }}
+                {{ form.kw3 }}
+            </div>
+            <div>
+                {{ form.kw4.label }}
+                {{ form.kw4 }}
+            </div>
+            <div>
+                {{ form.kw5.label }}
+                {{ form.kw5 }}
+            </div>
+            <div>
+                {{ form.kw6.label }}
+                {{ form.kw6 }}
+            </div>
+        </fieldset>
+        {{ form.submit }}
+    </form>
+</body>
+</html>

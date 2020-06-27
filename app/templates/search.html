@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.kw1.label }}
+            {{ form.kw1 }}
+        </div>
+        <div>
+            {{ form.kw2.label }}
+            {{ form.kw2 }}
+        </div>
+        <div>
+            {{ form.kw3.label }}
+            {{ form.kw3 }}
+        </div>
+        <div>
+            {{ form.kw4.label }}
+            {{ form.kw4 }}
+        </div>
+        <div>
+            {{ form.kw5.label }}
+            {{ form.kw5 }}
+        </div>
+        <div>
+            {{ form.kw6.label }}
+            {{ form.kw6 }}
+        </div>
+        {{ form.submit }}
+    </form>
+    <div>
+        {% for plan in results %}
+            <fieldset>
+            <h1>{{ plan.name }}</h1>
+            <h2>Requirements</h2>
+            <p class="article-content">{{ plan.req_short }}</p>
+            <h2>Key Benefits</h2>
+            <p class="article-content">{{ plan.benefits_short }}</p>
+            <a href="{{ url_for("view_plan", plan_name=plan.name) }}">Read More</a>
+            </fieldset>
+            <br>
+            <br>
+        {% endfor %}
+
+    </div>
+</body>
+</html>

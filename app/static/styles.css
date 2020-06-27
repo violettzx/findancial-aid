@@ -58,3 +58,7 @@ body {
 .remember-me {
   text-align: left;
 }
+
+.article-content {
+    white-space: pre-line;
+}
