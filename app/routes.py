@@ -34,7 +34,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password, favourites="")
         db.session.add(user)
         db.session.commit()
         flash('Account created. You are now able to login.', 'success')
@@ -89,3 +89,37 @@ def search():
 def view_plan(plan_name):
     plan = Plan.query.filter_by(name=plan_name).first_or_404()
     return render_template('view_plan.html', plan=plan)
+
+
+@app.route('/account/favourites')
+@login_required
+def favourites():
+    favourited_id = current_user.favourites.split(",")
+    favourited_plans = []
+    for plan_id in favourited_id:
+        if plan_id == "":
+            continue
+        else:
+            plan = Plan.query.get(int(plan_id))
+            favourited_plans.append(plan)
+    return render_template('favourites.html', plans=favourited_plans)
+
+
+@app.route('/background_process_favourite/<string:plan_id>')
+@login_required
+def background_process_favourite(plan_id):
+    favourites = current_user.favourites
+    if plan_id not in favourites.split(","):
+        current_user.favourites = favourites + "," + plan_id
+        db.session.commit()
+    return "nothing"
+
+
+@app.route('/background_process_remove_favourite/<string:plan_id>')
+@login_required
+def background_process_remove_favourite(plan_id):
+    new_favourites = current_user.favourites.replace("," + plan_id, "")
+    print(new_favourites)
+    current_user.favourites = new_favourites
+    db.session.commit()
+    return ""

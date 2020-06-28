@@ -43,11 +43,15 @@
             <h2>Key Benefits</h2>
             <p class="article-content">{{ plan.benefits_short }}</p>
             <a href="{{ url_for("view_plan", plan_name=plan.name) }}">Read More</a>
+            <form>
+                <button id="{{ plan.id }}" class='fav-button btn btn-default'>Favourite</button>
+            </form>
             </fieldset>
             <br>
             <br>
         {% endfor %}
-
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"type=text/javascript></script>
 </body>
 </html>
