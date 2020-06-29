@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-    <body class="flex-body">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+        <a class="navbar-brand" href="{{ url_for('home') }}">FindancialAid</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="flex-div">
         <div class="login-box">
             <div>
                 <form method="POST" action="">
@@ -55,10 +78,10 @@
                         {% endif %}
                     </div>
                     <div class="mt-4 pt-3">
-                        {{ form.submit(class="btn btn-lg btn-block btn-info") }}
+                        <button type="submit" class="btn btn-lg btn-block btn-info">Sign up</button>
                     </div>
                 </form>
             </div>
         </div>
-    </body>
+    </div>
 {% endblock %}
