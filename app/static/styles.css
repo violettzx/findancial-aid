@@ -38,12 +38,18 @@ body {
 }
 
 .tagline {
-  font-size: 20px;
-  font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+    line-height: 4rem;
+
+    color:#769fcd;
+    padding: 20px;
   margin-top: -15px;
 }
 
 .start-buttons {
+    padding-left: 20px;
   margin-top: 30px;
 }
 
@@ -297,5 +303,9 @@ body {
     color: white;
 }
 
+.start-image{
+
+    transform: rotate(-15deg);
+}
 
 
