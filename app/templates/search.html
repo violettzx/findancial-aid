@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<body>
     <nav class="navbar navbar-expand-lg navbar-light">
 
-        <a class="navbar-brand" href="">FindancialAid</a>
+        <a class="navbar-brand" href="{{ url_for('home') }}">FindancialAid</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
             <span class="navbar-toggler-icon"></span>
@@ -24,91 +23,81 @@
           </ul>
         </div>
       </nav>
+    <div class="container">
+        <hr>
+        <p class="select-plan">Select the type(s) of plan(s)</p>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="row checkboxes">
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw1.label }}
+                    {{ form.kw1 }}
+                    <span class="check-mark"></span>
+                 </label>
 
-    <hr>
-    <p class="select-plan">Select the type(s) of plan(s)</p>
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <div class="row checkboxes">
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw2.label }}
+                    {{ form.kw2 }}
+                    <span class="check-mark"></span>
+                 </label>
 
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw1.label }}
-                {{ form.kw1 }}
-                <span class="check-mark"></span>
-             </label>
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw3.label }}
+                    {{ form.kw3 }}
+                    <span class="check-mark"></span>
+                 </label>
 
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw2.label }}
-                {{ form.kw2 }}
-                <span class="check-mark"></span>
-             </label>
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw4.label }}
+                    {{ form.kw4 }}
+                    <span class="check-mark"></span>
+                 </label>
 
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw3.label }}
-                {{ form.kw3 }}
-                <span class="check-mark"></span>
-             </label>
-
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw4.label }}
-                {{ form.kw4 }}
-                <span class="check-mark"></span>
-             </label>
-
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw5.label }}
-                {{ form.kw5 }}
-                <span class="check-mark"></span>
-             </label>
-             <label class="custom-check col-lg-4 col-md-6">
-                {{ form.kw6.label }}
-                {{ form.kw6 }}
-                <span class="check-mark"></span>
-             </label>
-            <span class="submit-button">{{ form.submit }}</span>
-        </div>
-
-
-    </form>
-
-    <hr>
-
-    <div class="plans">
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw5.label }}
+                    {{ form.kw5 }}
+                    <span class="check-mark"></span>
+                 </label>
+                 <label class="custom-check col-lg-4 col-md-6">
+                    {{ form.kw6.label }}
+                    {{ form.kw6 }}
+                    <span class="check-mark"></span>
+                 </label>
+                <span class="submit-button">{{ form.submit }}</span>
+            </div>
+        </form>
+        <hr>
         {% for plan in results %}
-            <fieldset>
-            <table id="plan-generated">
-                <tr>
-                    <th><h1>{{ plan.name }}</h1></th>
-                </tr>
-                <tr>
-                    <td><h2>Requirements</h2></td>
-                </tr>
-                <tr>
-                    <td><p class="article-content">{{ plan.req_short }}</p></td>
-                </tr>
-                <tr>
-                    <td><h2>Key Benefits</h2></td>
-                </tr>
-                <tr>
-                    <td><p class="article-content">{{ plan.benefits_short }}</p></td>
-                </tr>
-                <tr>
-                    <td> <a href="{{ url_for("view_plan", plan_name=plan.name) }}">Read More</a></td>
-                </tr>
-            </table>
+            <div class="card">
+                <div class="card-body">
+                    <table class="plan-generated">
+                        <tr>
+                            <th class="plan-table-header">
+                                <h1>{{ plan.name }}</h1>
+                                <form>
+                                    <button id="{{ plan.id }}" class='fav-button btn btn-warning'>Favourite</button>
+                                </form>
+                            </th>
 
-
-
-
-
-
-            </fieldset>
-            <br>
-            <br>
+                        </tr>
+                        <tr>
+                            <td><h2>Requirements</h2></td>
+                        </tr>
+                        <tr>
+                            <td><p class="article-content">{{ plan.req_short }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><h2>Key Benefits</h2></td>
+                        </tr>
+                        <tr>
+                            <td><p class="article-content">{{ plan.benefits_short }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ url_for("view_plan", plan_name=plan.name) }}">Read More</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         {% endfor %}
-
     </div>
-
-
-</body>
 {% endblock %}
